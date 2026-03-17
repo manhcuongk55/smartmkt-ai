@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartMkt AI — AI Marketing cho SME Việt Nam</title>
+  <meta name="description" content="AI Marketing Co-Pilot cho 5.9 triệu SME và hộ kinh doanh Việt Nam. Tự động tạo content, chạy ads, chăm sóc khách — không cần team marketing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">SmartMkt <span class="logo-accent">AI</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Tính năng</a>
+        <a href="#how-it-works">Cách hoạt động</a>
+        <a href="#pricing">Bảng giá</a>
+        <a href="#results">Kết quả</a>
+      </div>
+      <div class="nav-cta">
+        <a href="#pricing" class="btn-nav">Dùng thử miễn phí</a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Dành riêng cho SME & hộ kinh doanh Việt Nam
+      </div>
+      <h1 class="hero-title">
+        <span class="line-1">AI Marketing</span>
+        <span class="line-2 gradient-text">không cần team</span>
+        <span class="line-3">chạy ngay hôm nay</span>
+      </h1>
+      <p class="hero-sub">
+        SmartMkt AI tự động <strong>viết content</strong>, <strong>chạy ads TikTok/Facebook</strong> và <strong>chăm sóc khách hàng 24/7</strong>.<br/>
+        Tiết kiệm 4 giờ/ngày. Tăng doanh thu từ tuần đầu tiên.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#pricing" class="btn-primary" id="heroCta">
+          <span>Bắt đầu miễn phí</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+          Xem demo
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">5.9M</span>
+          <span class="stat-label">SME & hộ kinh doanh VN</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">4h</span>
+          <span class="stat-label">Tiết kiệm mỗi ngày</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">+40%</span>
+          <span class="stat-label">Doanh thu trung bình</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating cards -->
+    <div class="floating-cards">
+      <div class="float-card card-tiktok">
+        <div class="fc-icon">🎬</div>
+        <div class="fc-body">
+          <div class="fc-title">TikTok Script AI</div>
+          <div class="fc-sub">Hook viral cho sản phẩm của bạn</div>
+        </div>
+        <div class="fc-badge fc-green">Mới</div>
+      </div>
+      <div class="float-card card-result">
+        <div class="fc-icon">📈</div>
+        <div class="fc-body">
+          <div class="fc-title">ROAS hôm nay</div>
+          <div class="fc-metric"><span class="metric-val">8.4x</span> <span class="metric-up">↑</span></div>
+        </div>
+      </div>
+      <div class="float-card card-chat">
+        <div class="fc-icon">💬</div>
+        <div class="fc-body">
+          <div class="fc-title">AI trả lời khách</div>
+          <div class="fc-sub">127 tin nhắn — không bỏ sót</div>
+        </div>
+        <div class="fc-badge fc-blue">Live</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section class="platforms">
+    <div class="container">
+      <p class="platforms-label">Tích hợp đầy đủ với các nền tảng bạn đang dùng</p>
+      <div class="platform-logos">
+        <div class="platform-item">
+          <div class="plat-icon tiktok-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          </div>
+          <span>TikTok Shop</span>
+        </div>
+        <div class="platform-item">
+          <div class="plat-icon fb-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          <span>Facebook</span>
+        </div>
+        <div class="platform-item">
+          <div class="plat-icon zalo-icon">
+            <div class="zalo-text-icon">Z</div>
+          </div>
+          <span>Zalo OA</span>
+        </div>
+        <div class="platform-item">
+          <div class="plat-icon ig-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <span>Instagram</span>
+        </div>
+        <div class="platform-item">
+          <div class="plat-icon yt-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <span>YouTube</span>
+        </div>
+        <div class="platform-item">
+          <div class="plat-icon shopee-icon">
+            <div class="shopee-text-icon">S</div>
+          </div>
+          <span>Shopee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Tính năng</div>
+        <h2 class="section-title">Một AI làm việc của cả team marketing</h2>
+        <p class="section-sub">Ba trụ cột mạnh mẽ, hoạt động liền mạch — từ tạo content đến chốt đơn.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card card-primary">
+          <div class="feature-num">01</div>
+          <div class="feature-icon-wrap icon-purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="9" height="9" rx="2" stroke="currentColor" stroke-width="2"/><rect x="13" y="2" width="9" height="9" rx="2" stroke="currentColor" stroke-width="2"/><rect x="2" y="13" width="9" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M17.5 13v8M13 17.5h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="feature-title">AI Content Studio</h3>
+          <p class="feature-desc">Nhập tên sản phẩm → AI tạo ngay lịch content 30 ngày, script TikTok viral, ảnh banner, caption đa kênh. Đăng tự động theo giờ vàng từng ngành.</p>
+          <div class="feature-tags">
+            <span>TikTok Script</span><span>Caption AI</span><span>AI Banner</span><span>Auto-Post</span>
+          </div>
+          <div class="feature-demo">
+            <div class="demo-prompt">
+              <span class="demo-label">Bạn nhập</span>
+              <span class="demo-text">"Quán bún bò Huế, giá 45k, Q.Bình Thạnh"</span>
+            </div>
+            <div class="demo-arrow">→</div>
+            <div class="demo-output">
+              <span class="demo-label">AI tạo</span>
+              <span class="demo-text">30 ngày content + 4 script TikTok + 8 banner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-num">02</div>
+          <div class="feature-icon-wrap icon-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="feature-title">AI Ads Engine</h3>
+          <p class="feature-desc">Thiết lập campaign TikTok + Facebook + Zalo trong 5 phút. AI tự tối ưu ngân sách, audience và creative mỗi giờ — không cần biết chạy ads.</p>
+          <div class="feature-tags">
+            <span>TikTok Ads</span><span>Facebook Ads</span><span>Auto-Optimize</span><span>ROAS Tracker</span>
+          </div>
+          <div class="feature-mini-chart">
+            <div class="chart-bar" style="height:35%"><span>T2</span></div>
+            <div class="chart-bar" style="height:55%"><span>T3</span></div>
+            <div class="chart-bar" style="height:45%"><span>T4</span></div>
+            <div class="chart-bar" style="height:70%"><span>T5</span></div>
+            <div class="chart-bar active" style="height:90%"><span>T6</span></div>
+            <div class="chart-label">ROAS tự tăng mỗi ngày nhờ AI optimize</div>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-num">03</div>
+          <div class="feature-icon-wrap icon-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="feature-title">AI Customer Care</h3>
+          <p class="feature-desc">Chatbot thông minh tự trả lời inbox 24/7 — giá, size, giao hàng, còn hàng. Auto tag khách, follow-up, upsell đúng thời điểm. Không bỏ lỡ một đơn nào.</p>
+          <div class="feature-tags">
+            <span>Chatbot 24/7</span><span>Auto-CRM</span><span>Upsell AI</span><span>Sentiment Alert</span>
+          </div>
+          <div class="chat-demo">
+            <div class="chat-msg customer">
+              <div class="chat-avatar">👤</div>
+              <div class="chat-bubble">Còn áo trắng size M không ạ?</div>
+            </div>
+            <div class="chat-msg bot">
+              <div class="chat-avatar bot-av">✦</div>
+              <div class="chat-bubble bot-bubble">Dạ còn ạ! Size M còn 5 cái. Ship trong 2h nội thành. Bạn muốn đặt ngay không? 😊</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 4: Trend Intelligence -->
+        <div class="feature-card card-wide">
+          <div class="feature-num">04</div>
+          <div class="feature-icon-wrap icon-orange">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="feature-title">Trend Intelligence — Biết Trước 48 Giờ</h3>
+          <p class="feature-desc">AI scan TikTok trending sound, hashtag và video format mỗi ngày. Cảnh báo bạn khi trend phù hợp với ngành, gợi ý content để lên xu hướng trước đối thủ.</p>
+          <div class="trend-alerts">
+            <div class="trend-alert alert-hot">
+              <span class="alert-icon">🔥</span>
+              <div class="alert-body">
+                <div class="alert-title">ASMR Unboxing đang tăng 340% — Ngành mỹ phẩm</div>
+                <div class="alert-time">2 giờ trước · 12 shop đang dùng trend này</div>
+              </div>
+              <button class="alert-cta">Tạo video →</button>
+            </div>
+            <div class="trend-alert alert-rising">
+              <span class="alert-icon">📈</span>
+              <div class="alert-body">
+                <div class="alert-title">#BữaAnGiaĐình trending — Ngành F&B</div>
+                <div class="alert-time">5 giờ trước · Lượt xem trung bình 2.1M</div>
+              </div>
+              <button class="alert-cta">Tạo video →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Cách hoạt động</div>
+        <h2 class="section-title">Bắt đầu trong 5 phút</h2>
+        <p class="section-sub">Không cần kỹ năng marketing, không cần team. Chỉ cần thông tin về shop.</p>
+      </div>
+      <div class="steps-wrapper">
+        <div class="steps-line"></div>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-bubble">1</div>
+            <div class="step-content">
+              <h4>Nhập thông tin shop</h4>
+              <p>Tên, ngành nghề, sản phẩm, địa chỉ — AI hiểu shop của bạn trong 60 giây.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-bubble">2</div>
+            <div class="step-content">
+              <h4>AI tạo chiến lược</h4>
+              <p>30 ngày lịch content + cấu hình ads đầu tiên + setup chatbot — tự động hoàn toàn.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-bubble">3</div>
+            <div class="step-content">
+              <h4>Bạn approve & đăng</h4>
+              <p>Review nhanh, chỉnh sửa nếu muốn, bấm đăng. AI tự post theo lịch tối ưu.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-bubble">4</div>
+            <div class="step-content">
+              <h4>AI học & tối ưu</h4>
+              <p>Mỗi tuần AI phân tích kết quả, tự cải thiện — bạn chỉ nhìn dashboard và đếm đơn.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Kết quả thật</div>
+        <h2 class="section-title">Họ đã thay đổi thế nào</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Trước tôi mất 3 tiếng/ngày viết caption. Giờ AI làm hết, tôi chỉ check 10 phút. Doanh thu tháng 3 tăng 52% so với tháng trước."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c)">L</div>
+            <div>
+              <div class="testi-name">Lan Anh</div>
+              <div class="testi-biz">Shop thời trang online · TP.HCM</div>
+            </div>
+          </div>
+          <div class="testi-metric">
+            <span class="metric-label">Tăng trưởng</span>
+            <span class="metric-value">+52%</span>
+          </div>
+        </div>
+        <div class="testi-card testi-featured">
+          <div class="testi-badge">Nổi bật</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Mình chạy quán bún bò 10 năm, chưa bao giờ nghĩ đến marketing. AI setup TikTok cho mình, tuần đầu tiên có 400 lượt xem, 15 đơn mới. Không ngờ vậy."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe)">M</div>
+            <div>
+              <div class="testi-name">Chú Minh</div>
+              <div class="testi-biz">Quán Bún Bò Huế · Bình Thạnh</div>
+            </div>
+          </div>
+          <div class="testi-metric">
+            <span class="metric-label">Đơn mới/tuần</span>
+            <span class="metric-value">+15</span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"ChatBot trả lời khách siêu nhanh. Hồi trước tôi miss nhiều tin nhắn lắm, giờ khách nào cũng được care. Tỉ lệ chốt đơn tăng hẳn."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background: linear-gradient(135deg, #43e97b, #38f9d7)">T</div>
+            <div>
+              <div class="testi-name">Thảo</div>
+              <div class="testi-biz">Mỹ phẩm handmade · Hà Nội</div>
+            </div>
+          </div>
+          <div class="testi-metric">
+            <span class="metric-label">Chốt đơn</span>
+            <span class="metric-value">+38%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Bảng giá</div>
+        <h2 class="section-title">Chọn gói phù hợp</h2>
+        <p class="section-sub">Bắt đầu miễn phí. Nâng cấp khi bạn sẵn sàng scale.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="price-tier">Miễn phí</div>
+          <div class="price-amount"><span class="price-num">0đ</span><span class="price-period">/tháng</span></div>
+          <div class="price-desc">Thử nghiệm sản phẩm, không cần thẻ tín dụng</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span>5 bài content AI/tháng</li>
+            <li><span class="check">✓</span>Trend alert cơ bản</li>
+            <li><span class="check">✓</span>1 kênh mạng xã hội</li>
+            <li class="muted"><span>✗</span>AI Ads Engine</li>
+            <li class="muted"><span>✗</span>Chatbot khách hàng</li>
+          </ul>
+          <a href="#" class="btn-price btn-ghost-price">Bắt đầu miễn phí</a>
+        </div>
+
+        <div class="price-card price-popular">
+          <div class="popular-badge">Phổ biến nhất</div>
+          <div class="price-tier">Flame</div>
+          <div class="price-amount"><span class="price-num">499k</span><span class="price-period">/tháng</span></div>
+          <div class="price-desc">Cho hộ kinh doanh muốn bắt đầu marketing nghiêm túc</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span>30 bài content AI/tháng</li>
+            <li><span class="check">✓</span>Script TikTok không giới hạn</li>
+            <li><span class="check">✓</span>3 kênh mạng xã hội</li>
+            <li><span class="check">✓</span>Chatbot cơ bản (Zalo + FB)</li>
+            <li><span class="check">✓</span>Trend Intelligence</li>
+            <li class="muted"><span>✗</span>AI Ads Optimizer</li>
+          </ul>
+          <a href="#" class="btn-price btn-primary-price">Dùng thử 14 ngày</a>
+        </div>
+
+        <div class="price-card price-pro">
+          <div class="price-tier">Blaze <span class="tier-badge">Pro</span></div>
+          <div class="price-amount"><span class="price-num">1.2M</span><span class="price-period">/tháng</span></div>
+          <div class="price-desc">Cho SME muốn tăng trưởng mạnh và tự động hoàn toàn</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span>Content AI không giới hạn</li>
+            <li><span class="check">✓</span>AI Ads TikTok + Facebook + Zalo</li>
+            <li><span class="check">✓</span>Chatbot nâng cao + CRM</li>
+            <li><span class="check">✓</span>Auto upsell & cross-sell</li>
+            <li><span class="check">✓</span>Analytics & Reports</li>
+            <li><span class="check">✓</span>Ưu tiên support Zalo</li>
+          </ul>
+          <a href="#" class="btn-price btn-primary-price">Dùng thử 14 ngày</a>
+        </div>
+
+        <div class="price-card price-agency">
+          <div class="price-tier">Inferno <span class="tier-badge agency-badge">Agency</span></div>
+          <div class="price-amount"><span class="price-num">3M</span><span class="price-period">/tháng</span></div>
+          <div class="price-desc">White-label cho Agency và chuỗi cửa hàng</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span>Tất cả tính năng Blaze</li>
+            <li><span class="check">✓</span>White-label với logo riêng</li>
+            <li><span class="check">✓</span>Quản lý đa shop</li>
+            <li><span class="check">✓</span>API access</li>
+            <li><span class="check">✓</span>Dedicated account manager</li>
+            <li><span class="check">✓</span>30% reseller commission</li>
+          </ul>
+          <a href="#" class="btn-price btn-agency-price">Liên hệ tư vấn</a>
+        </div>
+
+      </div>
+      <div class="price-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/></svg>
+        Không cần thẻ tín dụng · Hủy bất kỳ lúc nào · Thanh toán qua Zalo Pay, MoMo, chuyển khoản
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="cta-bg">
+      <div class="cta-orb cta-orb-1"></div>
+      <div class="cta-orb cta-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-icon-big">✦</div>
+        <h2 class="cta-title">Bắt đầu ngay hôm nay —<br/>miễn phí, không cần thẻ</h2>
+        <p class="cta-sub">Tham gia cùng 10,000+ SME và hộ kinh doanh Việt Nam đang tăng trưởng với SmartMkt AI</p>
+        <div class="cta-buttons">
+          <a href="#pricing" class="btn-primary btn-large">
+            Dùng thử miễn phí ngay
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://zalo.me" target="_blank" class="btn-zalo">
+            <div class="zalo-btn-icon">Z</div>
+            Tư vấn qua Zalo
+          </a>
+        </div>
+        <div class="cta-social-proof">
+          <div class="avatar-stack">
+            <div class="av-item" style="background:linear-gradient(135deg,#f093fb,#f5576c)">L</div>
+            <div class="av-item" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">M</div>
+            <div class="av-item" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">T</div>
+            <div class="av-item" style="background:linear-gradient(135deg,#fa709a,#fee140)">H</div>
+            <div class="av-item av-more">+</div>
+          </div>
+          <span>10,000+ shop đang dùng SmartMkt AI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-icon">✦</span>
+            <span class="logo-text">SmartMkt <span class="logo-accent">AI</span></span>
+          </div>
+          <p>AI Marketing Co-Pilot dành riêng cho SME và hộ kinh doanh Việt Nam.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Sản phẩm</div>
+          <a href="#">AI Content Studio</a>
+          <a href="#">AI Ads Engine</a>
+          <a href="#">AI Customer Care</a>
+          <a href="#">Trend Intelligence</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Công ty</div>
+          <a href="#">Về chúng tôi</a>
+          <a href="#">Blog</a>
+          <a href="#">Case Study</a>
+          <a href="#">Liên hệ</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Hỗ trợ</div>
+          <a href="#">Hướng dẫn sử dụng</a>
+          <a href="#">Zalo Support</a>
+          <a href="#">Chính sách bảo mật</a>
+          <a href="#">Điều khoản sử dụng</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SmartMkt AI. Tự hào Made in Vietnam 🇻🇳</span>
+        <span class="footer-tagline">Powered by AI · Built for 5.9M SME</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
