@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartMkt AI — Dashboard</title>
+  <meta name="description" content="SmartMkt AI Campaign Dashboard — quản lý marketing campaigns với AI" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">SmartMkt <span class="logo-accent">AI</span></span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="campaigns">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
+        Campaigns
+      </a>
+      <a href="#" class="nav-item" data-page="content">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="2"/><polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/></svg>
+        Content
+      </a>
+      <a href="#" class="nav-item" data-page="analytics">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Analytics
+      </a>
+      <a href="#" class="nav-item" data-page="customers">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87" stroke="currentColor" stroke-width="2"/><path d="M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2"/></svg>
+        Khách hàng
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="index.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Về Landing Page
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <h1 class="page-title" id="pageTitle">Campaigns</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" placeholder="Tìm kiếm..." id="searchInput" />
+        </div>
+        <div class="user-avatar">
+          <span>A</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- STATS ROW -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon si-purple">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><path d="M17.5 14v7M14 17.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-value" id="statTotal">0</div>
+          <div class="stat-label">Tổng campaigns</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon si-green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="22,4 12,14.01 9,11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-value" id="statActive">0</div>
+          <div class="stat-label">Đang chạy</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon si-blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-value" id="statDraft">0</div>
+          <div class="stat-label">Bản nháp</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon si-orange">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-value" id="statBudget">0</div>
+          <div class="stat-label">Tổng ngân sách</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="action-bar">
+      <div class="action-left">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">Tất cả</button>
+          <button class="filter-tab" data-filter="active">Đang chạy</button>
+          <button class="filter-tab" data-filter="draft">Bản nháp</button>
+          <button class="filter-tab" data-filter="completed">Hoàn thành</button>
+        </div>
+      </div>
+      <button class="btn-create" id="btnCreate">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Tạo Campaign
+      </button>
+    </div>
+
+    <!-- CAMPAIGN LIST (READ) -->
+    <div class="campaign-list" id="campaignList">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-icon">📋</div>
+      <h3>Chưa có campaign nào</h3>
+      <p>Tạo campaign đầu tiên để bắt đầu marketing với AI</p>
+      <button class="btn-create" onclick="openModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Tạo Campaign đầu tiên
+      </button>
+    </div>
+  </main>
+
+  <!-- MODAL (CREATE / UPDATE) -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Tạo Campaign mới</h2>
+        <button class="modal-close" id="modalClose">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <form id="campaignForm" class="modal-body">
+        <input type="hidden" id="campaignId" />
+
+        <div class="form-group">
+          <label for="campaignName">Tên campaign <span class="required">*</span></label>
+          <input type="text" id="campaignName" placeholder="VD: Sale Hè 2026 — TikTok" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="campaignPlatform">Nền tảng</label>
+            <select id="campaignPlatform">
+              <option value="tiktok">TikTok</option>
+              <option value="facebook">Facebook</option>
+              <option value="zalo">Zalo OA</option>
+              <option value="instagram">Instagram</option>
+              <option value="multi">Đa kênh</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="campaignType">Loại campaign</label>
+            <select id="campaignType">
+              <option value="content">Content AI</option>
+              <option value="ads">Chạy Ads</option>
+              <option value="chatbot">Chatbot</option>
+              <option value="full">Full Package</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="campaignBudget">Ngân sách (VNĐ)</label>
+            <input type="number" id="campaignBudget" placeholder="500000" min="0" />
+          </div>
+          <div class="form-group">
+            <label for="campaignStatus">Trạng thái</label>
+            <select id="campaignStatus">
+              <option value="draft">Bản nháp</option>
+              <option value="active">Đang chạy</option>
+              <option value="completed">Hoàn thành</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="campaignDesc">Mô tả</label>
+          <textarea id="campaignDesc" rows="3" placeholder="Mô tả ngắn về campaign..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="campaignStart">Ngày bắt đầu</label>
+            <input type="date" id="campaignStart" />
+          </div>
+          <div class="form-group">
+            <label for="campaignEnd">Ngày kết thúc</label>
+            <input type="date" id="campaignEnd" />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="btnCancel">Hủy</button>
+          <button type="submit" class="btn-submit" id="btnSubmit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="btnSubmitText">Tạo Campaign</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRM -->
+  <div class="modal-overlay" id="deleteOverlay">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>Xóa Campaign</h2>
+        <button class="modal-close" id="deleteClose">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="delete-warning">
+          <div class="delete-icon">⚠️</div>
+          <p>Bạn có chắc muốn xóa campaign <strong id="deleteName"></strong>?</p>
+          <p class="delete-sub">Hành động này không thể hoàn tác.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" id="deleteCancelBtn">Hủy</button>
+          <button class="btn-delete-confirm" id="deleteConfirmBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polyline points="3,6 5,6 21,6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Xóa vĩnh viễn
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
