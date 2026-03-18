@@ -1,0 +1,204 @@
+/* ============================================================
+   SmartMkt AI — Customer CRM Styles
+   ============================================================ */
+
+/* ---- Customer Grid (Card Layout) ---- */
+.customer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.customer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: var(--transition);
+  animation: fadeSlideIn 0.35s ease both;
+  position: relative;
+  overflow: hidden;
+}
+.customer-card:hover {
+  border-color: rgba(139,92,246,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* Top section: avatar + info */
+.cc-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.cc-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+.av-purple { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+.av-blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.av-cyan { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+.av-green { background: linear-gradient(135deg, #10b981, #059669); }
+.av-orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.av-pink { background: linear-gradient(135deg, #ec4899, #be185d); }
+
+.cc-info { flex: 1; min-width: 0; }
+.cc-name {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cc-contact {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cc-type {
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+.type-lead {
+  background: rgba(245,158,11,0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245,158,11,0.25);
+}
+.type-customer {
+  background: rgba(59,130,246,0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59,130,246,0.25);
+}
+.type-vip {
+  background: rgba(236,72,153,0.12);
+  color: #f472b6;
+  border: 1px solid rgba(236,72,153,0.25);
+}
+
+/* Details row */
+.cc-details {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.cc-detail {
+  flex: 1;
+}
+.cc-detail-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.cc-detail-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Tags */
+.cc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.cc-tag {
+  padding: 3px 10px;
+  background: rgba(139,92,246,0.08);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 50px;
+  font-size: 11px;
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+/* Note */
+.cc-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Actions */
+.cc-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+/* Source badge */
+.cc-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.source-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.src-facebook { background: #4267B2; }
+.src-tiktok { background: #fff; }
+.src-zalo { background: #0068FF; }
+.src-instagram { background: #E1306C; }
+.src-website { background: #10b981; }
+.src-referral { background: #f59e0b; }
+.src-other { background: #64748b; }
+
+/* Form hint */
+.form-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* API mode badge (inline styles since customers uses separate CSS) */
+.api-mode-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border-radius: 50px;
+  font-size: 11px; font-weight: 700;
+}
+.api-dot { width: 7px; height: 7px; border-radius: 50%; }
+.mode-local {
+  background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #fbbf24;
+}
+.mode-local .api-dot { background: #fbbf24; }
+.mode-erpnext {
+  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399;
+}
+.mode-erpnext .api-dot { background: #34d399; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .customer-grid { grid-template-columns: 1fr; }
+}
