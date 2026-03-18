@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartMkt AI — Cài đặt ERPNext</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">SmartMkt <span class="logo-accent">AI</span></span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item" data-page="campaigns">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
+        Campaigns
+      </a>
+      <a href="dashboard.html" class="nav-item" data-page="content">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="2"/><polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/></svg>
+        Content
+      </a>
+      <a href="dashboard.html" class="nav-item" data-page="analytics">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Analytics
+      </a>
+      <a href="#" class="nav-item active" data-page="settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2"/></svg>
+        Cài đặt
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="index.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Landing Page
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <h1 class="page-title">Cài đặt</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="user-avatar"><span>A</span></div>
+      </div>
+    </header>
+
+    <!-- SETTINGS CONTENT -->
+    <div class="settings-layout">
+
+      <!-- API MODE TOGGLE -->
+      <div class="settings-card">
+        <div class="sc-header">
+          <div class="sc-icon si-purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h2 class="sc-title">Chế độ API</h2>
+            <p class="sc-desc">Chọn nguồn dữ liệu cho dashboard</p>
+          </div>
+        </div>
+        <div class="mode-switcher">
+          <button class="mode-btn" id="modeLocal" data-mode="local">
+            <div class="mode-icon">💾</div>
+            <div class="mode-info">
+              <div class="mode-name">Demo Mode</div>
+              <div class="mode-detail">Dữ liệu lưu trên trình duyệt (localStorage)</div>
+            </div>
+          </button>
+          <button class="mode-btn" id="modeErpnext" data-mode="erpnext">
+            <div class="mode-icon">🏢</div>
+            <div class="mode-info">
+              <div class="mode-name">ERPNext Mode</div>
+              <div class="mode-detail">Kết nối với hệ thống ERPNext thật</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- ERPNEXT CONNECTION -->
+      <div class="settings-card" id="erpnextConfig">
+        <div class="sc-header">
+          <div class="sc-icon si-blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h2 class="sc-title">Kết nối ERPNext</h2>
+            <p class="sc-desc">Cấu hình kết nối tới Frappe/ERPNext instance</p>
+          </div>
+          <div class="connection-badge" id="connectionBadge">
+            <span class="conn-dot"></span>
+            <span class="conn-text">Chưa kết nối</span>
+          </div>
+        </div>
+
+        <form id="erpnextForm" class="settings-form">
+          <div class="form-group">
+            <label for="erpUrl">
+              ERPNext URL
+              <span class="label-help">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <span class="tooltip">VD: https://mycompany.erpnext.com hoặc URL self-hosted</span>
+              </span>
+            </label>
+            <input type="url" id="erpUrl" placeholder="https://your-site.erpnext.com" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="erpApiKey">API Key</label>
+              <input type="text" id="erpApiKey" placeholder="abc1234567890" autocomplete="off" />
+            </div>
+            <div class="form-group">
+              <label for="erpApiSecret">
+                API Secret
+                <span class="label-help">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span class="tooltip">Chỉ hiển thị một lần khi tạo. Lưu an toàn!</span>
+                </span>
+              </label>
+              <div class="secret-input">
+                <input type="password" id="erpApiSecret" placeholder="••••••••••••" autocomplete="off" />
+                <button type="button" class="secret-toggle" id="secretToggle" title="Hiện/Ẩn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-test" id="btnTest">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Kiểm tra kết nối
+            </button>
+            <button type="submit" class="btn-submit" id="btnSave">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2"/><polyline points="17,21 17,13 7,13 7,21" stroke="currentColor" stroke-width="2"/><polyline points="7,3 7,8 15,8" stroke="currentColor" stroke-width="2"/></svg>
+              Lưu cấu hình
+            </button>
+          </div>
+        </form>
+
+        <!-- Test result -->
+        <div class="test-result" id="testResult" style="display:none;">
+          <div class="test-icon" id="testIcon"></div>
+          <div class="test-message" id="testMessage"></div>
+        </div>
+      </div>
+
+      <!-- HELP: HOW TO GET API KEYS -->
+      <div class="settings-card card-info">
+        <div class="sc-header">
+          <div class="sc-icon si-green">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="8" x2="12.01" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h2 class="sc-title">Cách lấy API Key từ ERPNext</h2>
+            <p class="sc-desc">Hướng dẫn tạo API Token trong ERPNext</p>
+          </div>
+        </div>
+        <div class="help-steps">
+          <div class="help-step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Mở User List</strong> — Vào <code>/app/user</code> trong ERPNext, chọn user bạn muốn tạo API key
+            </div>
+          </div>
+          <div class="help-step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Vào tab "Settings"</strong> — Kéo xuống phần <code>API Access</code>
+            </div>
+          </div>
+          <div class="help-step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Click "Generate Keys"</strong> — Hệ thống sẽ hiện popup API Secret. <em>Copy ngay vì chỉ hiển thị 1 lần!</em>
+            </div>
+          </div>
+          <div class="help-step">
+            <div class="step-num">4</div>
+            <div class="step-text">
+              <strong>Copy API Key</strong> — Nằm ở field "API Key" trong cùng section
+            </div>
+          </div>
+          <div class="help-step">
+            <div class="step-num">5</div>
+            <div class="step-text">
+              <strong>Dán vào đây</strong> — Paste API Key và API Secret vào form phía trên, click "Kiểm tra kết nối"
+            </div>
+          </div>
+        </div>
+
+        <div class="help-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Chưa có ERPNext? Dùng <a href="https://frappecloud.com" target="_blank">Frappe Cloud</a> để tạo free trial, hoặc <a href="https://github.com/frappe/erpnext" target="_blank">tự cài đặt</a> trên server riêng.</span>
+        </div>
+      </div>
+
+      <!-- DOCTYPE MAPPING INFO -->
+      <div class="settings-card">
+        <div class="sc-header">
+          <div class="sc-icon si-orange">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polyline points="16,18 22,12 16,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8,6 2,12 8,18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h2 class="sc-title">Doctype Mapping</h2>
+            <p class="sc-desc">SmartMkt AI ↔ ERPNext field mapping</p>
+          </div>
+        </div>
+        <div class="mapping-table-wrap">
+          <table class="mapping-table">
+            <thead>
+              <tr>
+                <th>SmartMkt AI</th>
+                <th>ERPNext Doctype</th>
+                <th>ERPNext Field</th>
+                <th>Loại</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tên campaign</td><td>Campaign</td><td><code>campaign_name</code></td><td class="type-std">Standard</td></tr>
+              <tr><td>Trạng thái</td><td>Campaign</td><td><code>status</code></td><td class="type-std">Standard</td></tr>
+              <tr><td>Ngân sách</td><td>Campaign</td><td><code>budget</code></td><td class="type-std">Standard</td></tr>
+              <tr><td>Ngày bắt đầu</td><td>Campaign</td><td><code>from_date</code></td><td class="type-std">Standard</td></tr>
+              <tr><td>Ngày kết thúc</td><td>Campaign</td><td><code>to_date</code></td><td class="type-std">Standard</td></tr>
+              <tr><td>Mô tả</td><td>Campaign</td><td><code>description</code></td><td class="type-std">Standard</td></tr>
+              <tr><td>Nền tảng</td><td>Campaign</td><td><code>custom_platform</code></td><td class="type-custom">Custom</td></tr>
+              <tr><td>Loại campaign</td><td>Campaign</td><td><code>custom_campaign_type</code></td><td class="type-custom">Custom</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mapping-note">
+          <strong>Custom fields</strong> cần được tạo trong ERPNext → Customize Form → Campaign. Nếu chưa tạo, dữ liệu sẽ được lưu trong field <code>description</code>.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="erpnext-api.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

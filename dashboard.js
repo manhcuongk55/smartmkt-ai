@@ -1,6 +1,9 @@
 // ============================================================
-// SmartMkt AI — Dashboard CRUD Logic
+// SmartMkt AI — Dashboard CRUD Logic (ERPNext Integrated)
 // ============================================================
+// Uses ERPNextAPI unified client for all data operations.
+// Automatically routes to ERPNext or localStorage based on Settings.
+//
 // CRUD Flow:
 // CREATE → submit form → call API → update state → re-render list
 // READ   → fetch API → set state → render UI
@@ -10,58 +13,6 @@
 
 (function () {
   'use strict';
-
-  // ============================================================
-  // MOCK API (simulates backend with localStorage)
-  // ============================================================
-  const API = {
-    STORAGE_KEY: 'smartmkt_campaigns',
-    _delay: () => new Promise(r => setTimeout(r, 200 + Math.random() * 300)),
-
-    async getAll() {
-      await this._delay();
-      const data = localStorage.getItem(this.STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
-    },
-
-    async getById(id) {
-      await this._delay();
-      const all = await this.getAll();
-      return all.find(c => c.id === id) || null;
-    },
-
-    async create(campaign) {
-      await this._delay();
-      const all = await this.getAll();
-      const newCampaign = {
-        ...campaign,
-        id: 'camp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      };
-      all.unshift(newCampaign);
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(all));
-      return newCampaign;
-    },
-
-    async update(id, data) {
-      await this._delay();
-      const all = await this.getAll();
-      const idx = all.findIndex(c => c.id === id);
-      if (idx === -1) throw new Error('Campaign không tồn tại');
-      all[idx] = { ...all[idx], ...data, updatedAt: new Date().toISOString() };
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(all));
-      return all[idx];
-    },
-
-    async delete(id) {
-      await this._delay();
-      let all = await this.getAll();
-      all = all.filter(c => c.id !== id);
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(all));
-      return true;
-    },
-  };
 
   // ============================================================
   // STATE
@@ -90,92 +41,62 @@
   const statDraft = $('#statDraft');
   const statBudget = $('#statBudget');
 
-  // ============================================================
-  // SEED DATA (first-time demo)
-  // ============================================================
-  function seedIfEmpty() {
-    const existing = localStorage.getItem(API.STORAGE_KEY);
-    if (existing && JSON.parse(existing).length > 0) return;
+  // API Mode badge
+  const apiModeBadge = $('#apiModeBadge');
 
-    const seeds = [
-      {
-        id: 'camp_demo_1',
-        name: 'Sale Hè 2026 — TikTok Viral',
-        platform: 'tiktok',
-        type: 'full',
-        budget: 5000000,
-        status: 'active',
-        description: 'Campaign chạy video viral trên TikTok cho mùa sale hè, target Gen Z tại HCM',
-        startDate: '2026-06-01',
-        endDate: '2026-06-30',
-        createdAt: '2026-03-15T10:00:00Z',
-        updatedAt: '2026-03-15T10:00:00Z',
-      },
-      {
-        id: 'camp_demo_2',
-        name: 'Quảng bá quán Bún Bò Cô Tám',
-        platform: 'facebook',
-        type: 'content',
-        budget: 1500000,
-        status: 'active',
-        description: 'Content AI cho quán bún bò, đăng tự động Facebook + Zalo mỗi ngày',
-        startDate: '2026-03-01',
-        endDate: '2026-04-30',
-        createdAt: '2026-03-01T08:00:00Z',
-        updatedAt: '2026-03-10T14:30:00Z',
-      },
-      {
-        id: 'camp_demo_3',
-        name: 'Shop Thời Trang Mây — Instagram',
-        platform: 'instagram',
-        type: 'ads',
-        budget: 3000000,
-        status: 'draft',
-        description: 'Chạy Instagram Ads cho bộ sưu tập xuân hè mới',
-        startDate: '2026-04-01',
-        endDate: '2026-05-15',
-        createdAt: '2026-03-12T09:00:00Z',
-        updatedAt: '2026-03-12T09:00:00Z',
-      },
-      {
-        id: 'camp_demo_4',
-        name: 'Chatbot khuyến mãi cuối năm',
-        platform: 'zalo',
-        type: 'chatbot',
-        budget: 800000,
-        status: 'completed',
-        description: 'Chatbot Zalo OA tự đông gửi voucher và chăm sóc khách cũ',
-        startDate: '2025-12-01',
-        endDate: '2025-12-31',
-        createdAt: '2025-11-20T10:00:00Z',
-        updatedAt: '2026-01-02T08:00:00Z',
-      },
-      {
-        id: 'camp_demo_5',
-        name: 'Đa kênh — Ra mắt sản phẩm mới',
-        platform: 'multi',
-        type: 'full',
-        budget: 10000000,
-        status: 'active',
-        description: 'Campaign 360 trên TikTok + Facebook + Zalo cho sản phẩm skincare mới',
-        startDate: '2026-03-10',
-        endDate: '2026-04-10',
-        createdAt: '2026-03-08T14:00:00Z',
-        updatedAt: '2026-03-16T10:00:00Z',
-      },
-    ];
+  // ============================================================
+  // API MODE BADGE
+  // ============================================================
+  function updateApiModeBadge() {
+    if (!apiModeBadge) return;
+    const isErp = ERPNextAPI.isERPNextActive();
+    const modeText = apiModeBadge.querySelector('.api-mode-text');
+    const dot = apiModeBadge.querySelector('.api-dot');
 
-    localStorage.setItem(API.STORAGE_KEY, JSON.stringify(seeds));
+    if (isErp) {
+      modeText.textContent = 'ERPNext';
+      apiModeBadge.className = 'api-mode-badge mode-erpnext';
+    } else {
+      modeText.textContent = 'Demo';
+      apiModeBadge.className = 'api-mode-badge mode-local';
+    }
+
+    apiModeBadge.onclick = () => { window.location.href = 'settings.html'; };
+    apiModeBadge.style.cursor = 'pointer';
   }
+
+  // Inject badge styles
+  const badgeStyle = document.createElement('style');
+  badgeStyle.textContent = `
+    .api-mode-badge {
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 50px;
+      font-size: 11px; font-weight: 700;
+      transition: all 0.25s ease;
+    }
+    .api-mode-badge:hover { transform: translateY(-1px); }
+    .api-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .mode-local {
+      background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #fbbf24;
+    }
+    .mode-local .api-dot { background: #fbbf24; }
+    .mode-erpnext {
+      background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399;
+    }
+    .mode-erpnext .api-dot { background: #34d399; animation: dotPulse 1.5s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  `;
+  document.head.appendChild(badgeStyle);
 
   // ============================================================
   // READ — Fetch API → Set State → Render UI
   // ============================================================
   async function fetchCampaigns() {
     try {
-      campaigns = await API.getAll();
+      campaigns = await ERPNextAPI.getAll();
       updateStats();
       renderList();
+      updateApiModeBadge();
     } catch (err) {
       showToast('Lỗi khi tải dữ liệu: ' + err.message, 'error');
     }
@@ -292,7 +213,7 @@
   // ============================================================
   async function createCampaign(data) {
     try {
-      const created = await API.create(data);
+      const created = await ERPNextAPI.create(data);
       campaigns.unshift(created);      // → update state
       updateStats();
       renderList();                     // → re-render list
@@ -331,7 +252,7 @@
 
   async function updateCampaign(id, data) {
     try {
-      const updated = await API.update(id, data);
+      const updated = await ERPNextAPI.update(id, data);
       // → update state
       const idx = campaigns.findIndex(c => c.id === id);
       if (idx !== -1) campaigns[idx] = updated;
@@ -357,7 +278,7 @@
   async function confirmDelete() {
     if (!deletingId) return;
     try {
-      await API.delete(deletingId);
+      await ERPNextAPI.delete(deletingId);
       // → remove khỏi state
       campaigns = campaigns.filter(c => c.id !== deletingId);
       updateStats();
@@ -493,6 +414,7 @@
   // Sidebar nav active state
   $$('.nav-item[data-page]').forEach(item => {
     item.addEventListener('click', (e) => {
+      if (item.getAttribute('href') && item.getAttribute('href') !== '#') return; // let links work
       e.preventDefault();
       $$('.nav-item').forEach(n => n.classList.remove('active'));
       item.classList.add('active');
@@ -549,11 +471,11 @@
   }
 
   // ============================================================
-  // INIT — Seed data + Fetch (READ)
+  // INIT
   // ============================================================
-  seedIfEmpty();
   fetchCampaigns();
 
-  console.log('%c✦ SmartMkt AI Dashboard — CRUD Ready', 'color:#8b5cf6;font-weight:bold;font-size:14px');
+  console.log('%c✦ SmartMkt AI Dashboard — ERPNext Integrated', 'color:#8b5cf6;font-weight:bold;font-size:14px');
+  console.log('%c  Mode: ' + (ERPNextAPI.isERPNextActive() ? 'ERPNext' : 'Demo (localStorage)'), 'color:#94a3b8;font-size:12px');
   console.log('%c  Ctrl+N → Tạo campaign mới', 'color:#94a3b8;font-size:12px');
 })();
