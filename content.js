@@ -79,285 +79,306 @@
     const { brand, product, platform, contentType, tone, extra } = params;
     const brandName = brand || 'Shop của bạn';
     const productName = product || 'sản phẩm';
+    const story = extra || ''; // The "why" — seller's true story
     const e = () => randomEmoji(tone);
     const hashtags = randomHashtags(platform);
 
+    // ============================================================
+    // PHILOSOPHY: Real Story → Real People → Real Trust → Real Sales
+    // Every template leads with the authentic human story behind the product.
+    // AI does NOT create fake promotions — it amplifies the real truth.
+    // ============================================================
+
     const templates = {
       caption: {
-        friendly: () => `${e()} ${brandName} xin chào cả nhà!
+        friendly: () => `${e()} ${story ? `Câu chuyện thật về ${brandName}:` : `${brandName} — không phải quảng cáo, đây là sự thật:`}
 
-Hôm nay mình muốn giới thiệu ${productName} — sản phẩm mà ai dùng cũng phải khen ${e()}
+${story
+  ? `"${story}"`
+  : `${productName} được làm bởi người thật, cho người thật cần.`}
 
-${e()} Điểm nổi bật:
-• Chất lượng cao cấp, bền đẹp
-• Giá hợp lý cho mọi người
-• Free ship toàn quốc
-• Đổi trả miễn phí 7 ngày
+Mình ${story ? 'bán' : 'làm'} ${productName} vì mình tin vào nó — không phải vì lợi nhuận là trên hết ${e()}
 
-${e()} Inbox ngay để được tư vấn chi tiết nhé!
+${e()} Ai thật sự cần ${productName}:
+• Người đang tìm sản phẩm chất lượng thật
+• Người muốn mua từ người bán có tâm
+• Người không muốn bị lừa bởi quảng cáo phô
+
+${e()} Bạn có thể nhắn hỏi bất cứ điều gì — mình trả lời thật 100%
 
 📍 ${brandName}
-📞 Inbox / Comment để đặt hàng
 ${hashtags}`,
 
-        professional: () => `${e()} ${brandName} — ${productName}
+        professional: () => `${brandName} — ${productName}
 
-Chúng tôi tự hào giới thiệu ${productName} với những ưu điểm vượt trội:
+${story ? `Chúng tôi tạo ra ${productName} vì:\n"${story}"` : `${productName} được tạo ra với một mục tiêu rõ ràng: giải quyết đúng vấn đề thật của khách hàng.`}
 
-${e()} Tính năng nổi bật:
-▸ Thiết kế hiện đại, sang trọng
-▸ Chất liệu cao cấp, bền bỉ
-▸ Cam kết chính hãng 100%
-▸ Chính sách đổi trả linh hoạt
+${e()} Tại sao khách hàng chọn chúng tôi:
+▸ Sản phẩm được kiểm tra kỹ trước khi đến tay bạn
+▸ Người bán có trách nhiệm — không biến mất sau khi bán
+▸ Phản hồi khách hàng trong 2 giờ làm việc
+▸ Chính sách đổi trả minh bạch, không cần giải thích
 
-${e()} Ưu đãi đặc biệt:
-▸ Giảm 15% cho đơn hàng đầu tiên
-▸ Miễn phí vận chuyển đơn từ 500K
+${e()} Chúng tôi không hứa hẹn những gì chúng tôi không thể làm.
+Chúng tôi chỉ hứa điều chúng tôi đã và đang làm.
 
-Liên hệ ngay để được tư vấn!
+Liên hệ để biết thêm về ${productName}
 ${hashtags}`,
 
-        funny: () => `${e()} POV: Bạn chưa biết ${brandName} tồn tại...
+        funny: () => `${e()} Thật ra hả?
 
-Ngày xưa: "Mua đồ ở đâu nhỉ?" 🤔
-Bây giờ: "${brandName} ship tận nơi" ${e()}
+Mình bán ${productName} vì ${story || `mình đã từng tìm sản phẩm này mà không thấy ai bán tử tế`}.
 
-${productName} nhà mình ngon lắm nha:
-• Đẹp quá trời đẹp ${e()}
-• Giá rẻ giật mình
-• Ship nhanh hơn crush rep tin
-• Đổi trả "ez" 7 ngày
+Không phải vì mình nghĩ "ừ bán cái này có vẻ kiếm được tiền" ${e()}
 
-Ai chưa thử thì phí 1 đời ${e()}
-Comment "MUỐN" để mình inbox giá sốc!
+${e()} Mình không hứa nhiều — mình chỉ hứa:
+✓ ${productName} này mình đã dùng / đã làm / đã kiểm tra
+✓ Nếu không ưng mình hoàn tiền, không hỏi lý do
+✓ Mình trả lời tin nhắn trong 30 phút (giờ hành chính)
+
+Nếu bạn đang đọc đến đây — bạn là người thật, mình là người thật, mình nghĩ mình hợp ${e()}
+
+DM đi, mình chờ!
+
 ${hashtags}`,
 
-        urgent: () => `${e()} FLASH SALE — CHỈ HÔM NAY!
+        urgent: () => `⚡ Không phải flash sale giả tạo.
 
-${brandName} giảm SỐC ${productName} ${e()}
+${story ? `Lý do thật: "${story}"` : `${brandName} đang có đợt hàng chất lượng cao nhất từ trước đến nay.`}
 
-${e()} ƯU ĐÃI CÓ HẠN:
-🔴 Giảm 30% — chỉ còn vài suất!
-🔴 Free ship TOÀN QUỐC
-🔴 Tặng quà khi đặt trong 2 tiếng!
+${productName} này có hạn — không phải chiêu trò khuyến mãi.
+Lý do thật: ${story || 'chúng tôi chỉ nhập hàng khi chắc chắn chất lượng đạt chuẩn, và đợt này số lượng hữu hạn.'}
 
-⏰ Thời gian: Đến 23h59 hôm nay
-📦 Số lượng: Chỉ 50 suất
+${e()} Ai nên đặt ngay:
+→ Bạn đang cần một ${productName} thật sự tốt
+→ Bạn đã tìm kiếm lâu và muốn chắc ăn
+→ Bạn không muốn phải đổi trả phiền phức
 
-${e()} COMMENT "ĐẶT" NGAY — ĐỪng để hết!
+Đặt hôm nay — mình ưu tiên giao trong ngày.
+📞 Inbox ngay!
 ${hashtags}`,
 
-        luxury: () => `${e()} ${brandName} — Nâng tầm phong cách
+        luxury: () => `✨ Không phải ai cũng dành cho ${productName}.
 
-Giới thiệu ${productName} — dành cho những ai yêu thích sự tinh tế ${e()}
+${story ? `Câu chuyện tạo ra ${brandName}:\n"${story}"` : `${brandName} được tạo ra dành cho người trân trọng chất lượng thật.`}
 
-${e()} Điều gì làm nên khác biệt:
-• Chất liệu được chọn lọc kỹ lưỡng
-• Thiết kế độc quyền, giới hạn
-• Trải nghiệm mua sắm 5 sao
-• Đóng gói quà tặng sang trọng
+Chúng tôi không bán số lượng — chúng tôi bán trải nghiệm.
+${productName} của ${brandName} không phải hàng đại trà.
+Mỗi ${productName} được làm với sự tỉ mỉ khác biệt.
 
-${e()} Đặt hàng VIP — Nhận ưu đãi riêng
+${e()} Khách hàng mua ${productName} không chỉ mua sản phẩm —
+họ mua sự đảm bảo rằng điều gì đó được làm đúng cách.
 
-Inbox ${brandName} để được tư vấn 1:1 ${e()}
+Để biết thêm, hãy liên hệ riêng.
 ${hashtags}`,
 
-        casual: () => `${e()} Yo! ${brandName} có hàng mới nè!
+        casual: () => `Okay thật ra là thế này 🤙
 
-${productName} vừa về — xinh lắm luôn ${e()}
+${story ? `Mình làm ${productName} vì "${story}"` : `Mình làm ${productName} vì mình thấy thị trường toàn hàng fake, mình muốn làm cái thật.`}
 
-Check list đi:
-${e()} Đẹp ✓
-${e()} Chất ✓  
-${e()} Giá sinh viên ✓
-${e()} Free ship ✓
+Không màu mè, không vẽ vời. ${e()}
 
-Hết hàng là khóc nha ${e()}
-Inbox gấp đi mọi ngườiiii~
+Sản phẩm: ${productName}
+Shop: ${brandName}
+Chất lượng: thật
+Giá: hợp lý (inbox để hỏi)
+Người bán: là mình — người thật, bán hàng thật
+
+DM nếu bạn muốn biết thêm, mình reply nhanh lắm 🫶
 ${hashtags}`,
       },
 
       tiktok_script: {
-        _default: () => `🎬 SCRIPT TIKTOK — ${brandName}
-━━━━━━━━━━━━━━━━━━━━━━
+        friendly: () => `🎬 SCRIPT TIKTOK — ${productName.toUpperCase()}
+— Thể loại: Câu chuyện thật của người bán —
 
-📱 Nền tảng: TikTok | Thời lượng: 30-45s
+[HOOK — 3 giây đầu]
+"Tôi bán ${productName} không phải vì muốn giàu nhanh — mà vì..."
 
-🎵 Nhạc nền gợi ý: Trending sound hiện tại
+[THÂN — 20-40 giây]
+${story
+  ? `"${story}"\n\n[Quay cận cảnh sản phẩm + tay người làm]\n"Và đây là sản phẩm tôi làm ra từ câu chuyện đó."`
+  : `[Kể ngắn gọn bạn bắt đầu ${brandName} như thế nào, tại sao]\n[Quay cảnh thực tế làm/bán ${productName}]\n"Mỗi ${productName} tôi bán ra — tôi đã tự mình kiểm tra."`}
 
-━━━━━━━━━━━━━━━━━━━━━━
+[PHẦN THẬT]
+"Giá bao nhiêu? [Giá thật]. Chất lượng như thế nào? [Mô tả thật]. Có làm tôi thất vọng không? [Trả lời thật]."
 
-⏱ 0-3s | HOOK (Giữ người xem)
-━━━━━━━
-[Mở camera selfie] 
-"Mọi người ơi, ${productName} này mà không thử thì phí lắm!"
-→ Text overlay: "${brandName} — PHẢI THỬ NGAY"
+[CALL TO ACTION tự nhiên]
+"Nếu bạn đang cần ${productName} và muốn mua từ người có tâm — link bio."
 
-⏱ 3-10s | VẤN ĐỀ
-━━━━━━━
-"Trước đây mình cũng không biết mua ở đâu cho uy tín..."
-→ B-roll: Cảnh scrolling qua nhiều shop lạ
-→ Text: "❌ Hàng fake ❌ Ship chậm ❌ Không đổi trả"
+[HASHTAGS]
+${hashtags} #câuchuyệnthật #muahàngvn`,
 
-⏱ 10-20s | GIỚI THIỆU SẢN PHẨM
-━━━━━━━
-"Cho đến khi mình tìm thấy ${brandName}!"
-→ Unboxing ${productName}
-→ Close-up chi tiết sản phẩm
-→ Text: "✅ Chính hãng ✅ Ship nhanh ✅ Đổi trả 7 ngày"
+        professional: () => `🎬 SCRIPT TIKTOK — PROFESSIONAL
+${brandName} | ${productName}
 
-⏱ 20-30s | DEMO / REVIEW
-━━━━━━━
-"Chất lượng thật sự xịn lắm nè..."
-→ Quay cận cảnh sử dụng
-→ Before/After nếu có
-→ Text: "Xịn quá trời ${randomEmoji(tone)}"
+[HOOK]
+"95% người mua ${productName} online gặp vấn đề này. Chúng tôi giải quyết nó như thế nào?"
 
-⏱ 30-35s | SOCIAL PROOF
-━━━━━━━
-"Đã bán 1000+ đơn, 5 sao liên tục"
-→ Screenshot review từ khách
-→ Text: "⭐⭐⭐⭐⭐ 1000+ đánh giá"
+[PROBLEM]
+[Nêu đúng 1 pain point thật của khách hàng khi tìm ${productName}]
+"Bạn không biết sản phẩm có thật sự chất lượng không?"
+"Người bán có còn đó sau khi bạn thanh toán không?"
 
-⏱ 35-45s | CTA
-━━━━━━━
-"Link mua ở bio nha! Comment 'MUA' để mình inbox giá!"
-→ Trỏ tay lên bio
-→ Text: "🛒 LINK BIO | Comment MUA ngay"
+[SOLUTION — thật, không phóng đại]
+${story ? `"${story} — đó là lý do chúng tôi tạo ra ${productName} theo cách này."\n` : ''}
+"${brandName} giải quyết điều đó bằng: [Chính sách cụ thể, thật]"
 
-━━━━━━━━━━━━━━━━━━━━━━
+[PROOF — bằng chứng thật]
+[Review thật / số liệu thật / hình ảnh sản phẩm thật]
 
-📌 GHI CHÚ:
-• Quay dọc 9:16, không cần chỉnh filter nhiều
-• Nói nhanh, tự nhiên, đừng đọc kịch bản
-• Thêm subtitle auto trên CapCut
-• Đăng lúc 19:00-21:00 để reach cao
+[CTA]
+"Xem chi tiết tại link bio — không spam, không telesale."
+${hashtags}`,
 
+        funny: () => `🎬 SCRIPT TIKTOK — CÓ HỒN 😂
+${brandName}
+
+[HOOK — gây chú ý]
+"POV: Bạn order ${productName} online và nhận được... đúng như ảnh. Sốc không?"
+
+[TWIST hài]
+"Ừ, với ${brandName} thì như vậy đó. Không phải viral trick — là thật."
+
+[So sánh thật vs fake — hài hước nhưng honest]
+"Cái shop kia: ảnh lung linh, hàng về... 💀"
+"${brandName}: ảnh bình thường, hàng về... [quay unboxing thật]"
+
+[STORY ngắn]
+${story ? `"Mình bán ${productName} vì: ${story}. Nghe có vẻ nerd nhưng mà đó là thật."` : '"Mình bán thật, ship thật, chăm sóc thật."'}
+
+[CTA]
+"Mua thật? Link bio. Mình chờ 😎"
+${hashtags} #mấtngủvìhàngxịn`,
+
+        casual: () => `🎬 SCRIPT TIKTOK — CỰC GẦN GŨI
+${brandName} | ${productName}
+
+[HOOK — tự nhiên]
+[Tự nói thẳng vào camera, không dàn dựng]
+"Oke tôi sẽ không vòng vo — tôi bán ${productName}, đây là lý do tôi làm điều này:"
+
+[STORY — ngắn, thật, có cảm xúc]
+${story
+  ? `"${story}"`
+  : '"[Kể 2-3 câu về lý do bạn bắt đầu — điều gì thúc đẩy bạn]"'}
+
+[SẢN PHẨM — show thật]
+[Quay ${productName} thật, từ nhiều góc, dưới ánh sáng thật]
+"Trông như thế này nha — không filter, không edit."
+
+[GIÁ — công khai]
+"Giá [X]. Ai hỏi mình đều nói thật, không mặc cả kiểu tăng giá trước."
+
+[KẾT]
+"Mình là [Tên], tôi làm ${brandName}. Link bio nếu bạn cần."
 ${hashtags}`,
       },
 
       ad_copy: {
-        _default: () => `📢 AD COPY — ${brandName}
-━━━━━━━━━━━━━━━━━━━━━━
+        friendly: () => `📢 QUẢNG CÁO THẬT — ${brandName}
 
-🎯 HEADLINE (Dòng đầu tiên):
-"${productName} từ ${brandName} — Đẹp, Chất, Giá Hời!"
+"${story || `Chúng tôi tạo ra ${productName} vì chúng tôi đã từng là người mua và biết cảm giác thất vọng.`}"
 
-📝 PRIMARY TEXT:
-${randomEmoji(tone)} Bạn đang tìm ${productName} chất lượng với giá hợp lý?
+${productName} — được làm bởi người thật, cho người thật cần.
 
-${brandName} giúp bạn:
-✅ Sản phẩm chính hãng 100%
-✅ Free ship đơn từ 300K
-✅ Đổi trả miễn phí trong 7 ngày
-✅ Tư vấn 1:1 tận tâm
+${e()} KHÔNG hứa hão:
+✗ Không "đổi đời trong 7 ngày"
+✗ Không "cam kết 0 rủi ro" (vì rủi ro luôn tồn tại)
+✗ Không "review từ KOL" — chỉ từ khách thật
 
-${randomEmoji(tone)} Hơn 1,000 khách hàng đã tin tưởng!
+${e()} THẬT SỰ CÓ:
+✓ ${productName} chất lượng, được kiểm tra trực tiếp
+✓ Người bán trả lời inbox trong vòng 2 giờ
+✓ Đổi trả nếu không đúng như mô tả
 
-👉 ĐẶT HÀNG NGAY — Giảm 20% cho khách mới!
+CTA: Tìm hiểu thêm → [Link]
+${hashtags}`,
 
-📝 DESCRIPTION:
-${brandName} — Uy tín từ 2024. Ship toàn quốc. Đổi trả dễ dàng.
+        professional: () => `${brandName} | ${productName}
 
-🔹 CTA: Mua ngay | Tìm hiểu thêm | Nhắn tin
+${story ? `Lý do tồn tại của chúng tôi:\n"${story}"` : `Chúng tôi giải quyết vấn đề mà ${productName} phổ biến trên thị trường chưa giải quyết được.`}
 
-━━━━━━━━━━━━━━━━━━━━━━
+Dành cho:  người đang tìm ${productName} với:
+→ Chất lượng nhất quán, không may rủi
+→ Người bán có trách nhiệm rõ ràng
+→ Giá minh bạch, không ẩn phí
 
-📊 GỢI Ý TARGETING:
-• Độ tuổi: 18-35
-• Giới tính: Tùy sản phẩm
-• Sở thích: Shopping online, ${productName}
-• Địa điểm: HCM, HN, Đà Nẵng
-• Ngân sách: 200K-500K/ngày
-• Thời gian chạy: 3-7 ngày (test)
+Không phù hợp nếu bạn chỉ tìm hàng rẻ nhất thị trường.
+Phù hợp nếu bạn muốn đúng như mô tả.
 
-📌 A/B TEST:
-• Test 2-3 ảnh/video khác nhau
-• Test 2 headline khác nhau
-• Chạy 3 ngày → giữ ad có CTR > 2%`,
+Tìm hiểu thêm: [Link]
+${hashtags}`,
       },
 
       reply: {
-        _default: () => `💬 MẪU TRẢ LỜI KHÁCH HÀNG — ${brandName}
-━━━━━━━━━━━━━━━━━━━━━━
+        friendly: () => `Dạ ${e()} cảm ơn bạn đã hỏi!
 
-📌 KH HỎI GIÁ:
-"Chào bạn ${randomEmoji(tone)} Cảm ơn bạn quan tâm đến ${productName} nhé!
-Hiện tại giá [SỐ TIỀN]đ ạ. Đang có ưu đãi free ship cho đơn từ 300K.
-Bạn muốn mình tư vấn thêm size/màu không ạ?"
+[Trả lời thẳng câu hỏi của khách — không lòng vòng]
 
-📌 KH MUỐN GIẢM GIÁ:
-"Dạ bên mình đang có giá tốt nhất rồi ạ ${randomEmoji(tone)}
-Nhưng mình có thể tặng bạn [QUÀ TẶNG] nếu đặt hôm nay!
-Bạn chốt luôn nha, mình chuẩn bị hàng ngay ${randomEmoji(tone)}"
+Bạn hỏi về ${productName} — đây là sự thật:
+• [Điểm mạnh thật — nêu cụ thể]
+• [Điểm cần lưu ý — nếu có, nói thật]
+• Giá: [Giá thật, đúng giá bán]
+• Ship: [Thời gian thật, không hứa hão]
 
-📌 KH HỎI SHIP:
-"Ship toàn quốc bạn nhé! ${randomEmoji(tone)}
-• Nội thành HCM/HN: 1-2 ngày
-• Tỉnh khác: 2-4 ngày
-Free ship đơn từ 300K ạ. Bạn ở đâu để mình báo phí chính xác?"
+Nếu bạn cần thêm thông tin, nhắn thoải mái nhé!
+Mình ở đây để giúp bạn quyết định đúng, không phải để chốt đơn bằng mọi giá ${e()}
 
-📌 KH PHÀN NÀN:
-"Dạ, mình rất xin lỗi bạn về vấn đề này ${randomEmoji(tone)}
-Bạn gửi mình ảnh/video sản phẩm để mình kiểm tra ngay nhé.
-${brandName} cam kết đổi trả miễn phí nếu lỗi từ shop ạ!"
+📍 ${brandName}`,
 
-📌 KH ĐÃ MUA — FOLLOW UP:
-"Chào bạn! ${randomEmoji(tone)} Bạn nhận được ${productName} chưa ạ?
-Mình muốn check xem bạn có hài lòng không nhé.
-Nếu ổn, bạn để lại 5 sao giúp mình nha, cảm ơn bạn nhiều lắm ${randomEmoji(tone)}"`,
+        professional: () => `Kính chào,
+
+Cảm ơn bạn đã quan tâm đến ${productName} của ${brandName}.
+
+Về câu hỏi của bạn — chúng tôi sẽ trả lời trực tiếp và trung thực:
+
+[Trả lời đúng trọng tâm câu hỏi]
+[Nếu sản phẩm không phù hợp với nhu cầu khách, nói thẳng]
+[Đề xuất giải pháp thay thế nếu cần]
+
+Mọi thắc mắc thêm, bạn có thể liên hệ trực tiếp:
+📧 [Email] | 📞 [SĐT]
+
+Trân trọng,
+${brandName}`,
       },
 
       promo: {
-        _default: () => `🎉 THÔNG BÁO KHUYẾN MÃI — ${brandName}
-━━━━━━━━━━━━━━━━━━━━━━
+        friendly: () => `${e()} Ưu đãi thật — không chiêu trò
 
-${randomEmoji(tone)} ${brandName.toUpperCase()} — ĐẠI TIỆC SALE!
+${story ? `${brandName}: "${story.substring(0, 80)}..."` : `${brandName} — shop bán ${productName} với cam kết thật.`}
 
-🔥 Ưu đãi đặc biệt cho ${productName}:
+📣 Ưu đãi lần này có lý do thật:
+[Giải thích thật tại sao có khuyến mãi — ví dụ: nhập hàng về nhiều, muốn khách dùng thử, kỷ niệm shop...]
 
-🎁 GIẢM 30% toàn bộ sản phẩm
-🚚 FREE SHIP không giới hạn
-🎪 Tặng quà cho 100 đơn đầu tiên
-⏰ Thời gian: [NGÀY] — [NGÀY]
+${e()} ƯU ĐÃI:
+→ [Mô tả ưu đãi cụ thể, có điều kiện rõ ràng]
+→ Thời hạn: [Ngày cụ thể, không "hết hàng thôi"]
 
-━━━━━━━━━━━━━━━━━━━━━━
+Không bắt ép mua ngay. Nếu chưa cần — lưu lại cho lần sau.
+Nếu cần — inbox để đặt.
 
-📦 Cách đặt hàng:
-1️⃣ Chọn sản phẩm yêu thích
-2️⃣ Inbox / Comment "ĐẶT" + Mã SP
-3️⃣ Nhận hàng & thanh toán COD
-
-${randomEmoji(tone)} Số lượng có hạn — Ai nhanh người đó được!
-
-📍 ${brandName}
-💬 Inbox ngay để chốt đơn!
 ${hashtags}`,
       },
 
       story: {
-        _default: () => `📱 STORY/STATUS — ${brandName}
-━━━━━━━━━━━━━━━━━━━━━━
+        friendly: () => `📖 Câu chuyện thật của ${brandName}
 
-STORY 1 (Teaser):
-"Hmm... hôm nay có gì hot nè ${randomEmoji(tone)}"
-→ [Ảnh mờ sản phẩm] → Poll: "Đoán xem là gì?"
+${story
+  ? `"${story}"`
+  : `Tôi bắt đầu ${brandName} từ một vấn đề đơn giản: tôi không tìm được ${productName} tốt trên thị trường. Vậy thì tôi tự làm.`}
 
-STORY 2 (Reveal):
-"${productName} mới về! ${randomEmoji(tone)}"
-→ [Ảnh rõ sản phẩm] → "Vuốt lên để xem chi tiết"
+Hành trình không phải lúc nào cũng suôn sẻ. Có những lúc:
+→ [Thử thách thật bạn đã gặp]
+→ [Điều bạn học được]
 
-STORY 3 (Social Proof):
-"Khách feedback nè ${randomEmoji(tone)}"
-→ [Screenshot review 5 sao]
+Nhưng điều khiến tôi tiếp tục là ${productName} này thật sự giúp được người dùng.
 
-STORY 4 (CTA):
-"Ai muốn giảm 20%? ${randomEmoji(tone)}"
-→ [Sticker câu hỏi: "Rep MUỐN nha"]
+Không phải mọi người đều cần ${productName}. Nhưng người nào cần — tôi muốn họ tìm được cái đúng.
 
-━━━━━━━━━━━━━━━━━━━━━━
-📌 Đăng 4 story liên tục, cách nhau 2-3 tiếng
-📌 Dùng sticker poll/question để tăng tương tác`,
+📍 ${brandName} — Bán hàng bằng sự thật
+${hashtags}`,
       },
     };
 

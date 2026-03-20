@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartMkt AI — Đăng ký & Thanh toán</title>
+  <meta name="description" content="Đăng ký SmartMkt AI — AI Marketing Co-Pilot cho SME Việt Nam. Chọn gói phù hợp và bắt đầu ngay." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pricing.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="pricing-nav">
+    <a href="index.html" class="pn-logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">SmartMkt <span class="logo-accent">AI</span></span>
+    </a>
+    <a href="index.html" class="pn-back">← Về trang chủ</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="pricing-main">
+    <!-- STEP 1: SELECT PLAN -->
+    <section class="step-section" id="stepPlan">
+      <div class="step-header">
+        <div class="step-badge">Bước 1/3</div>
+        <h1 class="step-title">Chọn gói phù hợp</h1>
+        <p class="step-sub">Bắt đầu miễn phí — nâng cấp bất kỳ lúc nào. Hủy dễ dàng.</p>
+      </div>
+
+      <div class="plans-grid" id="plansGrid">
+        <!-- Plan: Free -->
+        <div class="plan-card" data-plan="free">
+          <div class="plan-header">
+            <div class="plan-name">Miễn phí</div>
+            <div class="plan-price"><span class="price-big">0đ</span><span class="price-period">/tháng</span></div>
+          </div>
+          <div class="plan-desc">Thử nghiệm, không cần thẻ</div>
+          <ul class="plan-features">
+            <li class="included">✓ 5 bài content AI/tháng</li>
+            <li class="included">✓ Trend alert cơ bản</li>
+            <li class="included">✓ 1 kênh mạng xã hội</li>
+            <li class="excluded">✗ AI Ads Engine</li>
+            <li class="excluded">✗ Chatbot khách hàng</li>
+          </ul>
+          <button class="plan-select-btn" data-plan="free">Chọn gói này</button>
+        </div>
+
+        <!-- Plan: Flame -->
+        <div class="plan-card plan-popular" data-plan="flame">
+          <div class="popular-tag">🔥 Phổ biến nhất</div>
+          <div class="plan-header">
+            <div class="plan-name">Flame</div>
+            <div class="plan-price"><span class="price-big">499k</span><span class="price-period">/tháng</span></div>
+          </div>
+          <div class="plan-desc">Cho hộ kinh doanh muốn marketing nghiêm túc</div>
+          <ul class="plan-features">
+            <li class="included">✓ 30 bài content AI/tháng</li>
+            <li class="included">✓ Script TikTok không giới hạn</li>
+            <li class="included">✓ 3 kênh mạng xã hội</li>
+            <li class="included">✓ Chatbot cơ bản (Zalo + FB)</li>
+            <li class="included">✓ Trend Intelligence</li>
+            <li class="excluded">✗ AI Ads Optimizer</li>
+          </ul>
+          <button class="plan-select-btn btn-popular" data-plan="flame">Dùng thử 14 ngày →</button>
+        </div>
+
+        <!-- Plan: Blaze -->
+        <div class="plan-card" data-plan="blaze">
+          <div class="plan-header">
+            <div class="plan-name">Blaze <span class="plan-badge">Pro</span></div>
+            <div class="plan-price"><span class="price-big">1.2M</span><span class="price-period">/tháng</span></div>
+          </div>
+          <div class="plan-desc">Cho SME muốn tăng trưởng mạnh</div>
+          <ul class="plan-features">
+            <li class="included">✓ Content AI không giới hạn</li>
+            <li class="included">✓ AI Ads TikTok + Facebook + Zalo</li>
+            <li class="included">✓ Chatbot nâng cao + CRM</li>
+            <li class="included">✓ Auto upsell & cross-sell</li>
+            <li class="included">✓ Analytics & Reports</li>
+            <li class="included">✓ Ưu tiên support Zalo</li>
+          </ul>
+          <button class="plan-select-btn" data-plan="blaze">Dùng thử 14 ngày →</button>
+        </div>
+
+        <!-- Plan: Inferno -->
+        <div class="plan-card" data-plan="inferno">
+          <div class="plan-header">
+            <div class="plan-name">Inferno <span class="plan-badge badge-agency">Agency</span></div>
+            <div class="plan-price"><span class="price-big">3M</span><span class="price-period">/tháng</span></div>
+          </div>
+          <div class="plan-desc">White-label cho Agency và chuỗi cửa hàng</div>
+          <ul class="plan-features">
+            <li class="included">✓ Tất cả tính năng Blaze</li>
+            <li class="included">✓ White-label logo riêng</li>
+            <li class="included">✓ Quản lý đa shop</li>
+            <li class="included">✓ API access</li>
+            <li class="included">✓ Dedicated account manager</li>
+            <li class="included">✓ 30% reseller commission</li>
+          </ul>
+          <button class="plan-select-btn" data-plan="inferno">Liên hệ tư vấn →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: SIGNUP FORM -->
+    <section class="step-section hidden" id="stepSignup">
+      <div class="step-header">
+        <div class="step-badge">Bước 2/3</div>
+        <h1 class="step-title">Thông tin đăng ký</h1>
+        <p class="step-sub">Điền thông tin shop để AI hiểu bạn và tạo chiến lược phù hợp.</p>
+      </div>
+
+      <div class="signup-layout">
+        <form class="signup-form" id="signupForm">
+          <div class="selected-plan-mini" id="selectedPlanMini">
+            <span class="spm-label">Gói đã chọn:</span>
+            <span class="spm-name" id="spmName">Flame</span>
+            <button type="button" class="spm-change" id="btnChangePlan">Đổi gói</button>
+          </div>
+
+          <div class="form-group">
+            <label for="shopName">Tên shop / Doanh nghiệp <span class="required">*</span></label>
+            <input type="text" id="shopName" placeholder="VD: Quán Bún Bò Cô Tám" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="signupEmail">Email <span class="required">*</span></label>
+              <input type="email" id="signupEmail" placeholder="email@shop.vn" required />
+            </div>
+            <div class="form-group">
+              <label for="signupPhone">Số điện thoại</label>
+              <input type="tel" id="signupPhone" placeholder="0912 345 678" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signupIndustry">Ngành nghề</label>
+            <select id="signupIndustry">
+              <option value="fnb">🍜 F&B (Đồ ăn, đồ uống)</option>
+              <option value="fashion">👗 Thời trang</option>
+              <option value="beauty">💄 Mỹ phẩm / Làm đẹp</option>
+              <option value="electronics">📱 Điện tử / Công nghệ</option>
+              <option value="health">💊 Sức khỏe / Fitness</option>
+              <option value="education">📚 Giáo dục / Đào tạo</option>
+              <option value="retail" selected>🛒 Bán lẻ tổng hợp</option>
+              <option value="agency">🏢 Agency / Marketing</option>
+              <option value="other">📦 Khác</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="referralCode">Mã giới thiệu (nếu có)</label>
+            <div class="referral-input-wrap">
+              <input type="text" id="referralCode" placeholder="VD: MAY1A2B" />
+              <span class="referral-bonus">🎁 +1 tháng miễn phí khi có mã</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-next-step" id="btnToPayment">
+            Tiếp tục thanh toán →
+          </button>
+        </form>
+
+        <div class="signup-benefits">
+          <div class="benefit-card">
+            <div class="bc-icon">🚀</div>
+            <div class="bc-text">
+              <strong>Dùng thử 14 ngày miễn phí</strong>
+              <p>Trải nghiệm đầy đủ tính năng trước khi quyết định</p>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="bc-icon">🔒</div>
+            <div class="bc-text">
+              <strong>Không cần thẻ tín dụng</strong>
+              <p>Thanh toán sau khi dùng thử, hủy bất cứ lúc nào</p>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="bc-icon">⚡</div>
+            <div class="bc-text">
+              <strong>Setup trong 5 phút</strong>
+              <p>AI tạo chiến lược marketing ngay sau khi đăng ký</p>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="bc-icon">💬</div>
+            <div class="bc-text">
+              <strong>Hỗ trợ qua Zalo 24/7</strong>
+              <p>Team support luôn sẵn sàng giúp bạn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: PAYMENT -->
+    <section class="step-section hidden" id="stepPayment">
+      <div class="step-header">
+        <div class="step-badge">Bước 3/3</div>
+        <h1 class="step-title">Chọn phương thức thanh toán</h1>
+        <p class="step-sub">Thanh toán nhanh chóng, an toàn. Hóa đơn điện tử tự động.</p>
+      </div>
+
+      <div class="payment-layout">
+        <!-- Order Summary -->
+        <div class="order-summary" id="orderSummary">
+          <h3 class="os-title">Đơn hàng của bạn</h3>
+          <div class="os-plan">
+            <div class="os-plan-name" id="osPlanName">Flame</div>
+            <div class="os-plan-price" id="osPlanPrice">499,000đ/tháng</div>
+          </div>
+          <div class="os-details">
+            <div class="os-row">
+              <span>Gói tháng</span>
+              <span id="osMonthly">499,000đ</span>
+            </div>
+            <div class="os-row os-discount" id="osDiscountRow" style="display:none">
+              <span>Giảm giá referral</span>
+              <span class="os-green" id="osDiscount">-499,000đ</span>
+            </div>
+            <div class="os-row os-trial">
+              <span>14 ngày dùng thử</span>
+              <span class="os-green">Miễn phí</span>
+            </div>
+            <div class="os-divider"></div>
+            <div class="os-row os-total">
+              <span>Thanh toán hôm nay</span>
+              <span class="os-total-price" id="osTotalPrice">0đ</span>
+            </div>
+          </div>
+          <div class="os-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/></svg>
+            Sau 14 ngày, sẽ tự thu <span id="osNextCharge">499,000đ</span>/tháng. Hủy bất kỳ lúc nào.
+          </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+          <div class="pm-card active" data-method="momo">
+            <div class="pm-radio"></div>
+            <div class="pm-icon" style="background: #ae2070">💜</div>
+            <div class="pm-info">
+              <div class="pm-name">MoMo</div>
+              <div class="pm-desc">Quét QR thanh toán ngay</div>
+            </div>
+          </div>
+          <div class="pm-card" data-method="zalopay">
+            <div class="pm-radio"></div>
+            <div class="pm-icon" style="background: #008fe5">💙</div>
+            <div class="pm-info">
+              <div class="pm-name">ZaloPay</div>
+              <div class="pm-desc">Quét QR hoặc ví ZaloPay</div>
+            </div>
+          </div>
+          <div class="pm-card" data-method="bank">
+            <div class="pm-radio"></div>
+            <div class="pm-icon" style="background: #10b981">🏦</div>
+            <div class="pm-info">
+              <div class="pm-name">Chuyển khoản ngân hàng</div>
+              <div class="pm-desc">Vietcombank, Techcombank, MB Bank...</div>
+            </div>
+          </div>
+          <div class="pm-card" data-method="vnpay">
+            <div class="pm-radio"></div>
+            <div class="pm-icon" style="background: #ec1c24">🔴</div>
+            <div class="pm-info">
+              <div class="pm-name">VNPAY</div>
+              <div class="pm-desc">QR Code hoặc Internet Banking</div>
+            </div>
+          </div>
+
+          <!-- QR Display -->
+          <div class="qr-display" id="qrDisplay">
+            <div class="qr-box">
+              <div class="qr-placeholder" id="qrPlaceholder">
+                <div class="qr-fake">
+                  <div class="qr-grid">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  </div>
+                </div>
+                <div class="qr-label" id="qrLabel">Quét mã QR bằng MoMo</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bank Transfer Info -->
+          <div class="bank-info" id="bankInfo" style="display:none">
+            <div class="bank-details">
+              <div class="bd-row"><span class="bd-label">Ngân hàng:</span><span class="bd-value">Vietcombank</span></div>
+              <div class="bd-row"><span class="bd-label">Số TK:</span><span class="bd-value">1026 8888 999</span></div>
+              <div class="bd-row"><span class="bd-label">Chủ TK:</span><span class="bd-value">CONG TY TNHH SMARTMKT AI</span></div>
+              <div class="bd-row"><span class="bd-label">Nội dung CK:</span><span class="bd-value" id="bankContent">SMARTMKT [EMAIL]</span></div>
+            </div>
+          </div>
+
+          <button class="btn-confirm-payment" id="btnConfirm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/></svg>
+            Xác nhận đăng ký
+          </button>
+
+          <button type="button" class="btn-back-step" id="btnBackToSignup">← Quay lại</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP SUCCESS -->
+    <section class="step-section hidden" id="stepSuccess">
+      <div class="success-content">
+        <div class="success-icon">🎉</div>
+        <h1 class="success-title">Chào mừng bạn đến với SmartMkt AI!</h1>
+        <p class="success-sub" id="successMessage">
+          Tài khoản của bạn đã được tạo thành công. Bắt đầu dùng thử 14 ngày ngay!
+        </p>
+
+        <div class="success-plan-card" id="successPlanCard">
+          <div class="spc-plan" id="spcPlan">Flame</div>
+          <div class="spc-trial">14 ngày dùng thử miễn phí</div>
+        </div>
+
+        <div class="success-referral" id="successReferral">
+          <h3>🎁 Mã giới thiệu của bạn</h3>
+          <p>Chia sẻ mã này — mỗi 3 người đăng ký = 1 tháng miễn phí!</p>
+          <div class="referral-code-box">
+            <span class="rc-code" id="rcCode">MAY1A2B</span>
+            <button class="rc-copy" id="btnCopyReferral">📋 Copy</button>
+          </div>
+          <div class="referral-share">
+            <button class="share-btn share-zalo" id="shareZalo">💬 Chia sẻ Zalo</button>
+            <button class="share-btn share-fb" id="shareFb">📘 Chia sẻ Facebook</button>
+          </div>
+        </div>
+
+        <div class="success-actions">
+          <a href="dashboard.html" class="btn-go-dashboard">
+            Vào Dashboard ngay →
+          </a>
+          <a href="content.html" class="btn-go-content">
+            Tạo content đầu tiên
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="auth.js"></script>
+  <script src="pricing.js"></script>
+</body>
+</html>

@@ -231,17 +231,7 @@
      ============================================================ */
   document.querySelectorAll('.btn-price').forEach(btn => {
     btn.addEventListener('click', function (e) {
-      if (this.classList.contains('btn-primary-price')) {
-        e.preventDefault();
-        this.textContent = '✓ Đang chuyển hướng...';
-        this.style.pointerEvents = 'none';
-        setTimeout(() => {
-          this.textContent = 'Dùng thử 14 ngày';
-          this.style.pointerEvents = '';
-          // In production: redirect to signup page
-          alert('🚀 Chào mừng! Tính năng đăng ký sẽ sớm được ra mắt.\n\nLiên hệ Zalo để được hỗ trợ sớm!');
-        }, 800);
-      }
+      // Links now go to pricing.html with plan params — no JS override needed
     });
   });
 

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartMkt AI — Audience Intelligence</title>
+  <meta name="description" content="Phân tích khách hàng, xu hướng hashtag Việt Nam, persona builder và thời điểm đăng tối ưu" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="campaign.css" />
+  <style>
+    /* Audience-specific additions */
+    .tabs-nav { display:flex; gap:4px; margin-bottom:28px; border-bottom:1px solid var(--border); padding-bottom:0; }
+    .tab-btn {
+      padding:10px 20px; font-size:14px; font-weight:600;
+      background:none; border:none; color:var(--text-2);
+      cursor:pointer; border-bottom:2px solid transparent;
+      transition:all .2s; margin-bottom:-1px;
+    }
+    .tab-btn.active { color:var(--primary); border-bottom-color:var(--primary); }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+
+    /* Persona card */
+    .persona-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+    .persona-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px; transition:all .25s; cursor:pointer; }
+    .persona-card:hover { border-color:var(--border-bright); transform:translateY(-2px); }
+    .persona-avatar { width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; margin-bottom:12px; }
+    .persona-name { font-size:15px; font-weight:700; margin-bottom:4px; }
+    .persona-meta { font-size:12px; color:var(--text-2); margin-bottom:12px; }
+    .persona-pain { font-size:13px; background:var(--bg-700); border-radius:8px; padding:10px; margin-bottom:8px; border-left:3px solid var(--primary); }
+    .persona-tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .persona-tag { background:var(--primary-dim); color:var(--primary); padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
+
+    /* Hashtag board */
+    .hashtag-search { display:flex; gap:10px; margin-bottom:18px; }
+    .hashtag-search input { flex:1; background:var(--bg-700); border:1px solid var(--border); border-radius:10px; padding:11px 14px; color:var(--text-1); font-size:14px; font-family:inherit; }
+    .hashtag-search input:focus { outline:none; border-color:var(--primary); }
+    .hashtag-search select { background:var(--bg-700); border:1px solid var(--border); border-radius:10px; padding:11px 14px; color:var(--text-1); font-size:14px; }
+    .hashtag-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+    .hashtag-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; transition:all .2s; cursor:pointer; }
+    .hashtag-card:hover { border-color:var(--border-bright); }
+    .hashtag-tag { font-size:16px; font-weight:700; color:var(--primary); margin-bottom:6px; }
+    .hashtag-meta { display:flex; justify-content:space-between; font-size:12px; color:var(--text-2); margin-bottom:8px; }
+    .hashtag-trend { font-size:11px; padding:2px 8px; border-radius:99px; font-weight:600; }
+    .trend-hot { background:rgba(239,68,68,0.12); color:var(--danger); }
+    .trend-up { background:var(--success-dim); color:var(--success); }
+    .trend-stable { background:var(--primary-dim); color:var(--primary); }
+    .bar-mini { height:4px; background:var(--bg-600); border-radius:99px; margin-top:6px; }
+    .bar-mini-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--primary),var(--success)); }
+
+    /* Best time heatmap */
+    .heatmap-grid { display:grid; grid-template-columns:auto repeat(7,1fr); gap:4px; font-size:12px; }
+    .heatmap-label { color:var(--text-2); display:flex; align-items:center; padding-right:8px; font-size:11px; white-space:nowrap; }
+    .heatmap-day { text-align:center; color:var(--text-2); font-size:11px; font-weight:600; padding:4px 0; }
+    .heatmap-cell {
+      aspect-ratio:1; border-radius:6px; cursor:pointer;
+      transition:transform .15s; display:flex; align-items:center; justify-content:center;
+      font-size:10px; font-weight:600; color:rgba(255,255,255,0.5);
+    }
+    .heatmap-cell:hover { transform:scale(1.15); z-index:2; }
+    .heat-0 { background:var(--bg-700); }
+    .heat-1 { background:rgba(99,102,241,0.2); }
+    .heat-2 { background:rgba(99,102,241,0.4); }
+    .heat-3 { background:rgba(99,102,241,0.65); color:#fff; }
+    .heat-4 { background:var(--primary); color:#fff; }
+    .heatmap-legend { display:flex; align-items:center; gap:8px; margin-top:12px; font-size:12px; color:var(--text-2); }
+    .legend-bars { display:flex; gap:4px; }
+    .legend-bar { width:18px; height:18px; border-radius:4px; }
+
+    /* Competitor analysis */
+    .competitor-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    @media(max-width:700px) { .competitor-grid { grid-template-columns:1fr; } }
+    .competitor-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px; }
+    .comp-name { font-size:15px; font-weight:700; margin-bottom:4px; }
+    .comp-handle { font-size:12px; color:var(--primary); margin-bottom:12px; }
+    .comp-stat-row { display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; }
+    .comp-val { font-weight:700; }
+    .insight-list { list-style:none; display:flex; flex-direction:column; gap:6px; margin-top:10px; }
+    .insight-item { font-size:13px; color:var(--text-2); padding:8px 10px; background:var(--bg-700); border-radius:8px; }
+    .insight-item strong { color:var(--text-1); }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><span class="logo-icon">✦</span><span class="logo-text">SmartMkt <span class="logo-accent">AI</span></span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
+        Dashboard
+      </a>
+      <a href="content.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="2"/><polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/></svg>
+        Content AI
+      </a>
+      <div class="nav-label-group">Marketing</div>
+      <a href="campaign.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="11,5 2,12 11,19" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polygon points="22,5 13,12 22,19" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        Campaigns
+      </a>
+      <a href="calendar.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/></svg>
+        Lịch Content
+      </a>
+      <a href="audience.html" class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Audience Intel
+      </a>
+      <div class="nav-label-group">Quản lý</div>
+      <a href="customers.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+        Khách hàng
+      </a>
+      <a href="analytics.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Analytics
+      </a>
+      <a href="pricing.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Pricing
+      </a>
+      <a href="settings.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2"/></svg>
+        Cài đặt
+      </a>
+    </nav>
+    <div class="sidebar-footer"><a href="index.html" class="nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Về Landing Page</a></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-title">🧠 Audience Intelligence</div>
+        <div class="topbar-sub">Persona · Hashtag · Best Time · Competitor Insights</div>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-primary" id="btnExportInsights">⬇ Export Insights</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="personas">👤 Personas</button>
+        <button class="tab-btn" data-tab="hashtags">🔖 Hashtags</button>
+        <button class="tab-btn" data-tab="besttime">⏰ Best Time</button>
+        <button class="tab-btn" data-tab="competitor">🔍 Competitor</button>
+      </div>
+
+      <!-- TAB: PERSONAS -->
+      <div class="tab-panel active" id="tab-personas">
+        <div class="board-header">
+          <div class="board-title">Customer Personas</div>
+          <button class="btn-ghost" id="btnAddPersona">+ Thêm Persona</button>
+        </div>
+        <div class="persona-grid" id="personaGrid"></div>
+      </div>
+
+      <!-- TAB: HASHTAGS -->
+      <div class="tab-panel" id="tab-hashtags">
+        <div class="board-header">
+          <div class="board-title">🔥 Trending Hashtags Việt Nam</div>
+        </div>
+        <div class="hashtag-search">
+          <input id="hashtagSearch" placeholder="Tìm hashtag: trà sữa, thời trang, mỹ phẩm..." />
+          <select id="hashtagIndustry">
+            <option value="all">🌐 Tất cả ngành</option>
+            <option value="food">🍜 Đồ ăn & Đồ uống</option>
+            <option value="fashion">👗 Thời trang</option>
+            <option value="beauty">💄 Làm đẹp</option>
+            <option value="home">🏠 Nhà cửa</option>
+            <option value="tech">📱 Công nghệ</option>
+          </select>
+          <button class="btn-primary" id="btnSearchHashtag">Tìm</button>
+        </div>
+        <div class="hashtag-grid" id="hashtagGrid"></div>
+      </div>
+
+      <!-- TAB: BEST TIME -->
+      <div class="tab-panel" id="tab-besttime">
+        <div class="board-header">
+          <div class="board-title">⏰ Thời điểm đăng tốt nhất</div>
+          <select id="bestTimePlatform" class="btn-ghost" style="padding:8px 16px;cursor:pointer;">
+            <option value="tiktok">🎵 TikTok</option>
+            <option value="facebook">👥 Facebook</option>
+            <option value="zalo">💬 Zalo</option>
+            <option value="instagram">📸 Instagram</option>
+          </select>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;">
+          <div class="heatmap-grid" id="heatmapGrid"></div>
+          <div class="heatmap-legend">
+            <span>Ít</span>
+            <div class="legend-bars">
+              <div class="legend-bar heat-0"></div>
+              <div class="legend-bar heat-1"></div>
+              <div class="legend-bar heat-2"></div>
+              <div class="legend-bar heat-3"></div>
+              <div class="legend-bar heat-4"></div>
+            </div>
+            <span>Nhiều tương tác</span>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-label">Giờ vàng #1</div><div class="stat-value" id="peak1">—</div><div class="stat-change stat-up">Cao nhất ngày</div></div>
+          <div class="stat-card"><div class="stat-label">Giờ vàng #2</div><div class="stat-value" id="peak2">—</div><div class="stat-change stat-up">Sáng sớm</div></div>
+          <div class="stat-card"><div class="stat-label">Ngày tốt nhất</div><div class="stat-value" id="peakDay">—</div><div class="stat-change stat-up">Tương tác cao</div></div>
+          <div class="stat-card"><div class="stat-label">Tránh đăng</div><div class="stat-value" id="avoidTime" style="color:var(--danger)">—</div><div class="stat-change stat-down">Tương tác thấp</div></div>
+        </div>
+      </div>
+
+      <!-- TAB: COMPETITOR -->
+      <div class="tab-panel" id="tab-competitor">
+        <div class="board-header">
+          <div class="board-title">🔍 Competitor Insights</div>
+          <button class="btn-ghost" id="btnAddCompetitor">+ Thêm đối thủ</button>
+        </div>
+        <div class="competitor-grid" id="competitorGrid"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="toastContainer"></div>
+  <script src="audience.js"></script>
+</body>
+</html>
